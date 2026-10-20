@@ -40,6 +40,18 @@
 </div>
 
 @code {
-    protected override void OnInitialized() => UserState.OnChange += StateHasChanged;
-    public void Dispose() => UserState.OnChange -= StateHasChanged;
+    protected override void OnInitialized()
+    {
+        UserState.OnChange += HandleStateChanged;
+    }
+
+    private async void HandleStateChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        UserState.OnChange -= HandleStateChanged;
+    }
 }

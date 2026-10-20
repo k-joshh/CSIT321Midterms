@@ -110,8 +110,14 @@
             return;
         }
 
-        await UserState.UpdateBalanceAsync(-betAmount);
+        if (nextCard != null)
+        {
+            currentCard = nextCard;
+        }
+
         nextCard = null;
+
+        await UserState.UpdateBalanceAsync(-betAmount);
         feedbackMessage = "Will the next card be higher or lower?";
         isGuessing = true;
     }
@@ -138,7 +144,5 @@
         {
             feedbackMessage = "Incorrect guess! House wins.";
         }
-
-        currentCard = nextCard;
     }
 }
