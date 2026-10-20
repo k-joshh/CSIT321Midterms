@@ -10,7 +10,7 @@
 
     @if (UserState.CurrentUser != null)
     {
-        <!-- Active User Dashboard -->
+        <!-- active user dashboard -->
         <div class="bg-[#000000] border-2 border-[#A46928] rounded-2xl p-8 text-center max-w-md mx-auto shadow-2xl">
             <h2 class="text-2xl font-bold mb-2 text-white">Welcome back, <span class="text-[#E4A700]">@UserState.CurrentUser.Username</span>!</h2>
             <p class="text-slate-300 mb-6">Current Balance: <span class="text-[#E4A700] font-black text-2xl">🪙 @UserState.CurrentUser.Balance.ToString("N0")</span></p>
@@ -24,7 +24,7 @@
     else
     {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Returning User Card: Velvet Burgundy tint with Gold border -->
+            <!-- returning user card -->
             <div class="bg-[#000000] border-2 border-[#A46928] p-6 rounded-2xl shadow-xl flex flex-col justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-white mb-1">Returning Player</h2>
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <!-- Create New User Card -->
+            <!-- new user card -->
             <div class="bg-[#000000] border-2 border-[#A46928] p-6 rounded-2xl shadow-xl flex flex-col justify-between">
                 <div>
                     <h2 class="text-xl font-bold text-[#E4A700] mb-1">New Player</h2>

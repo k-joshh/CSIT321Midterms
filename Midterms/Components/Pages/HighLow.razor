@@ -17,12 +17,9 @@
     }
     else
     {
-        <!-- Velvet Table Container: #7B1414 with Antique Gold Trim -->
         <div class="bg-[#7B1414]/30 border-4 border-[#A46928] rounded-3xl p-8 shadow-2xl relative">
             
-            <!-- Cards Display -->
             <div class="flex justify-center items-center space-x-8 mb-8">
-                <!-- Current Card -->
                 <div class="text-center">
                     <span class="text-xs text-[#E4A700] font-bold block mb-2 uppercase tracking-wider">Current Card</span>
                     @if (currentCard != null)
@@ -37,7 +34,6 @@
 
                 <div class="text-2xl font-black text-[#E4A700]/70">VS</div>
 
-                <!-- Next Card -->
                 <div class="text-center">
                     <span class="text-xs text-[#E4A700] font-bold block mb-2 uppercase tracking-wider">Next Card</span>
                     @if (nextCard != null)
@@ -50,7 +46,6 @@
                     }
                     else
                     {
-                        <!-- Mystery Card Back: Royal Navy (#072475) with Gold Dashed Border -->
                         <div class="w-24 h-36 bg-[#072475] border-2 border-dashed border-[#E4A700] rounded-xl flex items-center justify-center text-[#E4A700] font-black text-3xl shadow-inner">
                             ?
                         </div>
@@ -58,7 +53,6 @@
                 </div>
             </div>
 
-            <!-- Round Feedback -->
             @if (!string.IsNullOrEmpty(feedbackMessage))
             {
                 <div class="text-center py-2.5 px-4 mb-6 rounded-lg bg-[#000000]/80 border border-[#A46928]">
@@ -66,7 +60,6 @@
                 </div>
             }
 
-            <!-- Inputs & Guess Buttons -->
             <div class="space-y-4">
                 <div class="flex items-center justify-between bg-[#000000]/70 p-3 rounded-xl border border-[#A46928]">
                     <label class="text-sm font-semibold text-slate-200">Bet Amount:</label>
@@ -82,11 +75,9 @@
                 else
                 {
                     <div class="grid grid-cols-2 gap-4">
-                        <!-- Higher: Casino Felt Green (#13563B) -->
                         <button @onclick="() => MakeGuess(true)" class="bg-[#13563B] hover:bg-[#13563B]/80 text-white font-extrabold py-3 rounded-xl border border-[#E4A700] shadow-lg transition">
                             ▲ HIGHER
                         </button>
-                        <!-- Lower: Crimson Red (#C70000) -->
                         <button @onclick="() => MakeGuess(false)" class="bg-[#C70000] hover:bg-[#C70000]/80 text-white font-extrabold py-3 rounded-xl border border-[#7B1414] shadow-lg transition">
                             ▼ LOWER
                         </button>

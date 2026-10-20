@@ -17,10 +17,8 @@
     }
     else
     {
-        <!-- Table: Classic Casino Felt Green (#13563B) trimmed with Bronze Wood Border (#A46928) -->
         <div class="bg-[#13563B] border-8 border-[#A46928] rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-4 ring-[#000000] relative">
             
-            <!-- Dealer Section -->
             <div class="mb-8">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-xs uppercase font-extrabold tracking-widest text-[#E4A700]">Dealer Hand</span>
@@ -35,7 +33,6 @@
                         var card = dealerHand[i];
                         @if (i == 1 && !isRoundOver)
                         {
-                            <!-- Hidden Hole Card: Royal Navy (#072475) with Gold Trim -->
                             <div class="w-16 h-24 bg-[#072475] border-2 border-[#E4A700] rounded-lg flex items-center justify-center font-black text-[#E4A700] text-xl shadow-lg">
                                 ♠
                             </div>
@@ -52,7 +49,6 @@
                 </div>
             </div>
 
-            <!-- Player Section -->
             <div class="mb-8">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-xs uppercase font-extrabold tracking-widest text-[#E4A700]">Your Hand</span>
@@ -70,7 +66,6 @@
                 </div>
             </div>
 
-            <!-- Game Result Message -->
             @if (!string.IsNullOrEmpty(resultMessage))
             {
                 <div class="text-center py-3 px-6 bg-[#7B1414]/90 border border-[#E4A700] rounded-xl mb-6 shadow-lg">
@@ -78,7 +73,6 @@
                 </div>
             }
 
-            <!-- Controls -->
             <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t-2 border-[#A46928]/40">
                 @if (isRoundOver)
                 {
@@ -93,11 +87,9 @@
                 else
                 {
                     <div class="flex space-x-3">
-                        <!-- Hit: Royal Blue (#072475) -->
                         <button @onclick="Hit" class="bg-[#072475] hover:bg-[#072475]/80 text-white font-bold border border-[#E4A700] px-6 py-2 rounded-lg shadow-lg transition">
                             Hit
                         </button>
-                        <!-- Stand: Crimson Red (#C70000) -->
                         <button @onclick="Stand" class="bg-[#C70000] hover:bg-[#C70000]/80 text-white font-bold border border-[#7B1414] px-6 py-2 rounded-lg shadow-lg transition">
                             Stand
                         </button>
