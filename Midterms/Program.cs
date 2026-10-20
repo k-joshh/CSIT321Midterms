@@ -8,10 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddServerSideBlazor();
 
 // SQLite Database Factory
+var dbPath = Path.Combine(builder.Environment.ContentRootPath, "casino.db");
+
 builder.Services.AddDbContextFactory<CasinoDbContext>(options =>
-    options.UseSqlite("Data Source=casino.db"));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 builder.Services.AddScoped<UserStateService>();
 

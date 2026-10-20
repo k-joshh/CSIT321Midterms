@@ -35,20 +35,20 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Pages/Blackjack.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCbGFja2phY2sucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Pages/HighLow.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIaWdoTG93LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Routes.razor]
@@ -58,11 +58,3 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-bcrpnimkcj
-
-[C:/Users/L23Y16W31/Documents/Midterms/Midterms/Components/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-6ku3etnr96

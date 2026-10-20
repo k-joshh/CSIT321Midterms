@@ -1,0 +1,84 @@
+@page "/"
+@rendermode InteractiveServer
+@inject Midterms.Services.UserStateService UserState
+
+<div class="max-w-4xl mx-auto py-8">
+    <div class="text-center mb-10">
+        <h1 class="text-5xl font-black text-amber-400 tracking-wide mb-2">ROYAL CASINO</h1>
+        <p class="text-slate-400">Play Blackjack and High/Low. No real money required.</p>
+    </div>
+
+    @if (UserState.CurrentUser != null)
+    {
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center max-w-md mx-auto shadow-xl">
+            <h2 class="text-2xl font-bold mb-2">Welcome back, <span class="text-amber-400">@UserState.CurrentUser.Username</span>!</h2>
+            <p class="text-slate-400 mb-6">Current Balance: <span class="text-emerald-400 font-bold text-xl">🪙 @UserState.CurrentUser.Balance.ToString("N0")</span></p>
+
+            <div class="grid grid-cols-2 gap-4">
+                <a href="/blackjack" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-lg shadow transition">Play Blackjack</a>
+                <a href="/high-low" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-lg shadow transition">Play High / Low</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- retrieve user -->
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg">
+                <h2 class="text-xl font-bold text-white mb-2">Returning Player</h2>
+                <p class="text-sm text-slate-400 mb-4">Type your username to load your saved balance.</p>
+
+                <div class="space-y-4">
+                    <input @bind="existingUsername" placeholder="Enter username" class="w-full bg-slate-950 border border-slate-700 px-4 py-3 rounded-lg text-white focus:outline-none focus:border-amber-400" />
+                    <button @onclick="HandleLogin" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-lg border border-slate-600 transition">
+                        Load Account
+                    </button>
+                    @if (!string.IsNullOrEmpty(loginError))
+                    {
+                        <p class="text-red-400 text-sm">@loginError</p>
+                    }
+                </div>
+            </div>
+
+            <!-- create new user -->
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg">
+                <h2 class="text-xl font-bold text-amber-400 mb-2">New Player</h2>
+                <p class="text-sm text-slate-400 mb-4">Create a username and start with 🪙 1,000 free chips!</p>
+
+                <div class="space-y-4">
+                    <input @bind="newUsername" placeholder="Enter new username" class="w-full bg-slate-950 border border-slate-700 px-4 py-3 rounded-lg text-white focus:outline-none focus:border-amber-400" />
+                    <button @onclick="HandleRegister" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-lg shadow transition">
+                        Create Account
+                    </button>
+                    @if (!string.IsNullOrEmpty(registerError))
+                    {
+                        <p class="text-red-400 text-sm">@registerError</p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private string existingUsername = "";
+    private string newUsername = "";
+    private string loginError = "";
+    private string registerError = "";
+
+    private async Task HandleLogin()
+    {
+        loginError = "";
+        if (string.IsNullOrWhiteSpace(existingUsername)) return;
+        bool ok = await UserState.LoginAsync(existingUsername);
+        if (!ok) loginError = "User not found in local database.";
+    }
+
+    private async Task HandleRegister()
+    {
+        registerError = "";
+        if (string.IsNullOrWhiteSpace(newUsername)) return;
+        bool ok = await UserState.CreateUserAsync(newUsername);
+        if (!ok) registerError = "Username is already taken.";
+    }
+}
