@@ -4,55 +4,60 @@
 
 <div class="max-w-4xl mx-auto py-8">
     <div class="text-center mb-10">
-        <h1 class="text-5xl font-black text-amber-400 tracking-wide mb-2">ROYAL CASINO</h1>
-        <p class="text-slate-400">Play Blackjack and High/Low. No real money required.</p>
+        <h1 class="text-5xl font-black text-[#E4A700] tracking-widest mb-2 drop-shadow">ROYAL CASINO</h1>
+        <p class="text-amber-200/70 font-medium">Step up to the tables. No real money required.</p>
     </div>
 
     @if (UserState.CurrentUser != null)
     {
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center max-w-md mx-auto shadow-xl">
-            <h2 class="text-2xl font-bold mb-2">Welcome back, <span class="text-amber-400">@UserState.CurrentUser.Username</span>!</h2>
-            <p class="text-slate-400 mb-6">Current Balance: <span class="text-emerald-400 font-bold text-xl">🪙 @UserState.CurrentUser.Balance.ToString("N0")</span></p>
+        <!-- Active User Dashboard -->
+        <div class="bg-[#000000] border-2 border-[#A46928] rounded-2xl p-8 text-center max-w-md mx-auto shadow-2xl">
+            <h2 class="text-2xl font-bold mb-2 text-white">Welcome back, <span class="text-[#E4A700]">@UserState.CurrentUser.Username</span>!</h2>
+            <p class="text-slate-300 mb-6">Current Balance: <span class="text-[#E4A700] font-black text-2xl">🪙 @UserState.CurrentUser.Balance.ToString("N0")</span></p>
 
             <div class="grid grid-cols-2 gap-4">
-                <a href="/blackjack" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-lg shadow transition">Play Blackjack</a>
-                <a href="/high-low" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-lg shadow transition">Play High / Low</a>
+                <a href="/blackjack" class="bg-[#13563B] hover:bg-[#13563B]/80 border border-[#E4A700] text-white font-bold py-3 rounded-lg shadow-lg transition">Play Blackjack</a>
+                <a href="/high-low" class="bg-[#7B1414] hover:bg-[#7B1414]/80 border border-[#E4A700] text-white font-bold py-3 rounded-lg shadow-lg transition">Play High / Low</a>
             </div>
         </div>
     }
     else
     {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- retrieve user -->
-            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg">
-                <h2 class="text-xl font-bold text-white mb-2">Returning Player</h2>
-                <p class="text-sm text-slate-400 mb-4">Type your username to load your saved balance.</p>
+            <!-- Returning User Card: Velvet Burgundy tint with Gold border -->
+            <div class="bg-[#000000] border-2 border-[#A46928] p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-white mb-1">Returning Player</h2>
+                    <p class="text-sm text-slate-400 mb-4">Type your username to load your saved balance.</p>
+                </div>
 
                 <div class="space-y-4">
-                    <input @bind="existingUsername" placeholder="Enter username" class="w-full bg-slate-950 border border-slate-700 px-4 py-3 rounded-lg text-white focus:outline-none focus:border-amber-400" />
-                    <button @onclick="HandleLogin" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-lg border border-slate-600 transition">
+                    <input @bind="existingUsername" placeholder="Enter username" class="w-full bg-[#000000] border border-[#A46928] px-4 py-3 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-[#E4A700]" />
+                    <button @onclick="HandleLogin" class="w-full bg-[#072475] hover:bg-[#072475]/80 border border-[#E4A700] text-white font-bold py-3 rounded-lg transition shadow">
                         Load Account
                     </button>
                     @if (!string.IsNullOrEmpty(loginError))
                     {
-                        <p class="text-red-400 text-sm">@loginError</p>
+                        <p class="text-[#C70000] text-sm font-semibold">@loginError</p>
                     }
                 </div>
             </div>
 
-            <!-- create new user -->
-            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg">
-                <h2 class="text-xl font-bold text-amber-400 mb-2">New Player</h2>
-                <p class="text-sm text-slate-400 mb-4">Create a username and start with 🪙 1,000 free chips!</p>
+            <!-- Create New User Card -->
+            <div class="bg-[#000000] border-2 border-[#A46928] p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-[#E4A700] mb-1">New Player</h2>
+                    <p class="text-sm text-slate-400 mb-4">Create a username and start with 🪙 1,000 free chips!</p>
+                </div>
 
                 <div class="space-y-4">
-                    <input @bind="newUsername" placeholder="Enter new username" class="w-full bg-slate-950 border border-slate-700 px-4 py-3 rounded-lg text-white focus:outline-none focus:border-amber-400" />
-                    <button @onclick="HandleRegister" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-lg shadow transition">
+                    <input @bind="newUsername" placeholder="Enter new username" class="w-full bg-[#000000] border border-[#A46928] px-4 py-3 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-[#E4A700]" />
+                    <button @onclick="HandleRegister" class="w-full bg-[#E4A700] hover:bg-[#A46928] text-[#000000] font-black py-3 rounded-lg shadow-lg transition">
                         Create Account
                     </button>
                     @if (!string.IsNullOrEmpty(registerError))
                     {
-                        <p class="text-red-400 text-sm">@registerError</p>
+                        <p class="text-[#C70000] text-sm font-semibold">@registerError</p>
                     }
                 </div>
             </div>

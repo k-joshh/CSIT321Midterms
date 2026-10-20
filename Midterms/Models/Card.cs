@@ -22,7 +22,7 @@ public class Card
         _ => ""
     };
 
-    public string TextColor => (Suit == Suit.Hearts || Suit == Suit.Diamonds) ? "text-red-600" : "text-slate-900";
+    public string TextColor => (Suit == Suit.Hearts || Suit == Suit.Diamonds) ? "text-[#C70000]" : "text-[#000000]";
 
     public string DisplayRank => Rank switch
     {

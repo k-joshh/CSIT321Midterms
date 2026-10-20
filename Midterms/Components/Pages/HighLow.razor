@@ -5,27 +5,29 @@
 
 <div class="max-w-xl mx-auto">
     <div class="text-center mb-6">
-        <h1 class="text-3xl font-black text-amber-400">HIGH / LOW</h1>
-        <p class="text-slate-400 text-sm">Guess if the next card will be Higher or Lower. Ace is High.</p>
+        <h1 class="text-3xl font-black text-[#E4A700] tracking-wide drop-shadow">HIGH / LOW</h1>
+        <p class="text-amber-200/70 text-sm font-medium">Guess if the next card will be Higher or Lower. Ace is High.</p>
     </div>
 
     @if (UserState.CurrentUser == null)
     {
-        <div class="bg-amber-950/40 border border-amber-800 p-6 rounded-xl text-center">
-            <p class="text-amber-300">Please enter a username on the <a href="/" class="underline font-bold">Home Page</a> before playing.</p>
+        <div class="bg-[#7B1414]/40 border border-[#A46928] p-6 rounded-2xl text-center shadow-lg">
+            <p class="text-[#E4A700] font-medium">Please enter a username on the <a href="/" class="underline text-white font-bold">Home Page</a> before playing.</p>
         </div>
     }
     else
     {
-        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl">
+        <!-- Velvet Table Container: #7B1414 with Antique Gold Trim -->
+        <div class="bg-[#7B1414]/30 border-4 border-[#A46928] rounded-3xl p-8 shadow-2xl relative">
+            
             <!-- Cards Display -->
-            <div class="flex justify-center items-center space-x-6 mb-8">
+            <div class="flex justify-center items-center space-x-8 mb-8">
                 <!-- Current Card -->
                 <div class="text-center">
-                    <span class="text-xs text-slate-400 block mb-2">Current Card</span>
+                    <span class="text-xs text-[#E4A700] font-bold block mb-2 uppercase tracking-wider">Current Card</span>
                     @if (currentCard != null)
                     {
-                        <div class="w-24 h-36 bg-white border border-slate-300 rounded-xl p-3 flex flex-col justify-between shadow-lg @currentCard.TextColor">
+                        <div class="w-24 h-36 bg-[#FFFFFF] border-2 border-[#A46928] rounded-xl p-3 flex flex-col justify-between shadow-2xl @currentCard.TextColor">
                             <span class="text-lg font-bold">@currentCard.DisplayRank</span>
                             <span class="text-4xl self-center">@currentCard.SuitSymbol</span>
                             <span class="text-lg font-bold self-end">@currentCard.DisplayRank</span>
@@ -33,14 +35,14 @@
                     }
                 </div>
 
-                <div class="text-2xl font-bold text-slate-600">VS</div>
+                <div class="text-2xl font-black text-[#E4A700]/70">VS</div>
 
                 <!-- Next Card -->
                 <div class="text-center">
-                    <span class="text-xs text-slate-400 block mb-2">Next Card</span>
+                    <span class="text-xs text-[#E4A700] font-bold block mb-2 uppercase tracking-wider">Next Card</span>
                     @if (nextCard != null)
                     {
-                        <div class="w-24 h-36 bg-white border border-slate-300 rounded-xl p-3 flex flex-col justify-between shadow-lg @nextCard.TextColor">
+                        <div class="w-24 h-36 bg-[#FFFFFF] border-2 border-[#A46928] rounded-xl p-3 flex flex-col justify-between shadow-2xl @nextCard.TextColor">
                             <span class="text-lg font-bold">@nextCard.DisplayRank</span>
                             <span class="text-4xl self-center">@nextCard.SuitSymbol</span>
                             <span class="text-lg font-bold self-end">@nextCard.DisplayRank</span>
@@ -48,7 +50,8 @@
                     }
                     else
                     {
-                        <div class="w-24 h-36 bg-slate-800 border-2 border-dashed border-slate-700 rounded-xl flex items-center justify-center text-slate-500 font-bold text-2xl">
+                        <!-- Mystery Card Back: Royal Navy (#072475) with Gold Dashed Border -->
+                        <div class="w-24 h-36 bg-[#072475] border-2 border-dashed border-[#E4A700] rounded-xl flex items-center justify-center text-[#E4A700] font-black text-3xl shadow-inner">
                             ?
                         </div>
                     }
@@ -58,31 +61,33 @@
             <!-- Round Feedback -->
             @if (!string.IsNullOrEmpty(feedbackMessage))
             {
-                <div class="text-center py-2 px-4 mb-6 rounded-lg bg-slate-950 border border-slate-800">
-                    <span class="font-semibold text-amber-300">@feedbackMessage</span>
+                <div class="text-center py-2.5 px-4 mb-6 rounded-lg bg-[#000000]/80 border border-[#A46928]">
+                    <span class="font-bold text-[#E4A700]">@feedbackMessage</span>
                 </div>
             }
 
             <!-- Inputs & Guess Buttons -->
             <div class="space-y-4">
-                <div class="flex items-center justify-between bg-slate-950 p-3 rounded-lg border border-slate-800">
-                    <label class="text-sm font-medium text-slate-300">Bet Amount:</label>
-                    <input type="number" min="10" step="10" @bind="betAmount" disabled="@isGuessing" class="bg-slate-900 border border-slate-700 rounded px-3 py-1 w-28 text-right font-bold text-amber-400" />
+                <div class="flex items-center justify-between bg-[#000000]/70 p-3 rounded-xl border border-[#A46928]">
+                    <label class="text-sm font-semibold text-slate-200">Bet Amount:</label>
+                    <input type="number" min="10" step="10" @bind="betAmount" disabled="@isGuessing" class="bg-[#000000] border border-[#A46928] rounded px-3 py-1 w-28 text-right font-black text-[#E4A700] focus:outline-none focus:border-[#E4A700]" />
                 </div>
 
                 @if (!isGuessing)
                 {
-                    <button @onclick="StartRound" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-xl transition">
+                    <button @onclick="StartRound" class="w-full bg-[#E4A700] hover:bg-[#A46928] text-[#000000] font-black py-3 rounded-xl shadow-lg transition">
                         Place Bet & Play
                     </button>
                 }
                 else
                 {
                     <div class="grid grid-cols-2 gap-4">
-                        <button @onclick="() => MakeGuess(true)" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition">
+                        <!-- Higher: Casino Felt Green (#13563B) -->
+                        <button @onclick="() => MakeGuess(true)" class="bg-[#13563B] hover:bg-[#13563B]/80 text-white font-extrabold py-3 rounded-xl border border-[#E4A700] shadow-lg transition">
                             ▲ HIGHER
                         </button>
-                        <button @onclick="() => MakeGuess(false)" class="bg-rose-600 hover:bg-rose-500 text-white font-bold py-3 rounded-xl transition">
+                        <!-- Lower: Crimson Red (#C70000) -->
+                        <button @onclick="() => MakeGuess(false)" class="bg-[#C70000] hover:bg-[#C70000]/80 text-white font-extrabold py-3 rounded-xl border border-[#7B1414] shadow-lg transition">
                             ▼ LOWER
                         </button>
                     </div>
@@ -143,7 +148,6 @@
             feedbackMessage = "Incorrect guess! House wins.";
         }
 
-        // Shift nextCard to currentCard for the next hand
         currentCard = nextCard;
     }
 }

@@ -3,15 +3,17 @@
 @inject NavigationManager Navigation
 @implements IDisposable
 
-<div class="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
-    <!-- navbar -->
-    <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex justify-between items-center shadow-md">
+<div class="min-h-screen bg-[#000000] text-[#FFFFFF] flex flex-col font-sans">
+    <!-- Navbar: Deep Velvet Burgundy with Antique Gold Border -->
+    <header class="bg-[#7B1414] border-b-2 border-[#A46928] px-6 py-4 flex justify-between items-center shadow-2xl">
         <div class="flex items-center space-x-6">
-            <a href="/" class="text-2xl font-black tracking-wider text-amber-400 uppercase">♠ CardPlus</a>
-            <nav class="flex space-x-4">
-                <NavLink href="/" Match="NavLinkMatch.All" class="px-3 py-1 rounded hover:bg-slate-800 text-slate-300 font-medium">Home</NavLink>
-                <NavLink href="/blackjack" class="px-3 py-1 rounded hover:bg-slate-800 text-slate-300 font-medium">Blackjack</NavLink>
-                <NavLink href="/high-low" class="px-3 py-1 rounded hover:bg-slate-800 text-slate-300 font-medium">High / Low</NavLink>
+            <a href="/" class="text-2xl font-black tracking-widest text-[#E4A700] uppercase drop-shadow flex items-center space-x-2">
+                <span>♠</span> <span>CardPlus</span>
+            </a>
+            <nav class="flex space-x-2">
+                <NavLink href="/" Match="NavLinkMatch.All" class="px-3 py-1.5 rounded-md hover:bg-[#000000]/40 text-slate-100 font-medium transition">Home</NavLink>
+                <NavLink href="/blackjack" class="px-3 py-1.5 rounded-md hover:bg-[#000000]/40 text-slate-100 font-medium transition">Blackjack</NavLink>
+                <NavLink href="/high-low" class="px-3 py-1.5 rounded-md hover:bg-[#000000]/40 text-slate-100 font-medium transition">High / Low</NavLink>
             </nav>
         </div>
 
@@ -19,21 +21,21 @@
             @if (UserState.CurrentUser != null)
             {
                 <div class="flex items-center space-x-4">
-                    <div class="bg-slate-800 border border-slate-700 px-4 py-1.5 rounded-full flex items-center space-x-2">
-                        <span class="text-sm text-slate-400">@UserState.CurrentUser.Username</span>
-                        <span class="text-amber-400 font-bold">🪙 @UserState.CurrentUser.Balance.ToString("N0")</span>
+                    <div class="bg-[#000000]/70 border border-[#A46928] px-4 py-1.5 rounded-full flex items-center space-x-2 shadow-inner">
+                        <span class="text-sm text-slate-300 font-semibold">@UserState.CurrentUser.Username</span>
+                        <span class="text-[#E4A700] font-black tracking-wide">🪙 @UserState.CurrentUser.Balance.ToString("N0")</span>
                     </div>
-                    <button @onclick="UserState.Logout" class="text-xs text-red-400 hover:text-red-300 underline">Switch User</button>
+                    <button @onclick="UserState.Logout" class="text-xs text-[#E4A700] hover:text-[#FFFFFF] underline transition">Switch User</button>
                 </div>
             }
             else
             {
-                <span class="text-sm text-slate-400 italic">Not logged in</span>
+                <span class="text-sm text-amber-200/60 italic">Not logged in</span>
             }
         </div>
     </header>
 
-    <!-- main content -->
+    <!-- Main Content -->
     <main class="flex-1 p-6 max-w-6xl w-full mx-auto">
         @Body
     </main>

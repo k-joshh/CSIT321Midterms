@@ -5,27 +5,28 @@
 
 <div class="max-w-4xl mx-auto">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-black text-amber-400">BLACKJACK</h1>
-        <div class="text-slate-400 text-sm">Pays 3:2 on Natural • Dealer Stands on 17</div>
+        <h1 class="text-3xl font-black text-[#E4A700] tracking-wide drop-shadow">BLACKJACK</h1>
+        <div class="text-amber-200/70 text-sm font-medium">Pays 3:2 on Natural • Dealer Stands on 17</div>
     </div>
 
     @if (UserState.CurrentUser == null)
     {
-        <div class="bg-amber-950/40 border border-amber-800 p-6 rounded-xl text-center">
-            <p class="text-amber-300">Please enter a username on the <a href="/" class="underline font-bold">Home Page</a> before playing.</p>
+        <div class="bg-[#7B1414]/40 border border-[#A46928] p-6 rounded-2xl text-center shadow-lg">
+            <p class="text-[#E4A700] font-medium">Please enter a username on the <a href="/" class="underline text-white font-bold">Home Page</a> before playing.</p>
         </div>
     }
     else
     {
-        <!-- Table Area -->
-        <div class="bg-emerald-900 border-4 border-emerald-950 rounded-3xl p-8 shadow-2xl relative">
+        <!-- Table: Classic Casino Felt Green (#13563B) trimmed with Bronze Wood Border (#A46928) -->
+        <div class="bg-[#13563B] border-8 border-[#A46928] rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-4 ring-[#000000] relative">
+            
             <!-- Dealer Section -->
             <div class="mb-8">
                 <div class="flex justify-between items-center mb-2">
-                    <span class="text-xs uppercase font-bold tracking-wider text-emerald-300">Dealer Hand</span>
+                    <span class="text-xs uppercase font-extrabold tracking-widest text-[#E4A700]">Dealer Hand</span>
                     @if (isRoundOver)
                     {
-                        <span class="text-sm font-bold bg-emerald-950/60 px-3 py-1 rounded-full text-white">Score: @GetHandScore(dealerHand)</span>
+                        <span class="text-sm font-bold bg-[#000000]/60 border border-[#A46928] px-3 py-1 rounded-full text-white">Score: @GetHandScore(dealerHand)</span>
                     }
                 </div>
                 <div class="flex space-x-3">
@@ -34,14 +35,14 @@
                         var card = dealerHand[i];
                         @if (i == 1 && !isRoundOver)
                         {
-                            <!-- Hidden Hole Card -->
-                            <div class="w-16 h-24 bg-blue-900 border-2 border-white rounded-lg flex items-center justify-center font-bold text-slate-300 shadow">
-                                ?
+                            <!-- Hidden Hole Card: Royal Navy (#072475) with Gold Trim -->
+                            <div class="w-16 h-24 bg-[#072475] border-2 border-[#E4A700] rounded-lg flex items-center justify-center font-black text-[#E4A700] text-xl shadow-lg">
+                                ♠
                             </div>
                         }
                         else
                         {
-                            <div class="w-16 h-24 bg-white border border-slate-300 rounded-lg p-1.5 flex flex-col justify-between shadow @card.TextColor">
+                            <div class="w-16 h-24 bg-[#FFFFFF] border border-[#A46928] rounded-lg p-1.5 flex flex-col justify-between shadow-xl @card.TextColor">
                                 <span class="text-sm font-bold leading-none">@card.DisplayRank</span>
                                 <span class="text-2xl self-center leading-none">@card.SuitSymbol</span>
                                 <span class="text-sm font-bold self-end leading-none">@card.DisplayRank</span>
@@ -54,13 +55,13 @@
             <!-- Player Section -->
             <div class="mb-8">
                 <div class="flex justify-between items-center mb-2">
-                    <span class="text-xs uppercase font-bold tracking-wider text-emerald-300">Your Hand</span>
-                    <span class="text-sm font-bold bg-emerald-950/60 px-3 py-1 rounded-full text-white">Score: @GetHandScore(playerHand)</span>
+                    <span class="text-xs uppercase font-extrabold tracking-widest text-[#E4A700]">Your Hand</span>
+                    <span class="text-sm font-bold bg-[#000000]/60 border border-[#A46928] px-3 py-1 rounded-full text-white">Score: @GetHandScore(playerHand)</span>
                 </div>
                 <div class="flex space-x-3">
                     @foreach (var card in playerHand)
                     {
-                        <div class="w-16 h-24 bg-white border border-slate-300 rounded-lg p-1.5 flex flex-col justify-between shadow @card.TextColor">
+                        <div class="w-16 h-24 bg-[#FFFFFF] border border-[#A46928] rounded-lg p-1.5 flex flex-col justify-between shadow-xl @card.TextColor">
                             <span class="text-sm font-bold leading-none">@card.DisplayRank</span>
                             <span class="text-2xl self-center leading-none">@card.SuitSymbol</span>
                             <span class="text-sm font-bold self-end leading-none">@card.DisplayRank</span>
@@ -72,19 +73,19 @@
             <!-- Game Result Message -->
             @if (!string.IsNullOrEmpty(resultMessage))
             {
-                <div class="text-center py-3 px-6 bg-slate-950/80 border border-slate-700 rounded-xl mb-6">
-                    <span class="text-lg font-bold text-amber-300">@resultMessage</span>
+                <div class="text-center py-3 px-6 bg-[#7B1414]/90 border border-[#E4A700] rounded-xl mb-6 shadow-lg">
+                    <span class="text-lg font-bold text-[#E4A700]">@resultMessage</span>
                 </div>
             }
 
             <!-- Controls -->
-            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-emerald-800">
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t-2 border-[#A46928]/40">
                 @if (isRoundOver)
                 {
                     <div class="flex items-center space-x-3">
-                        <label class="text-sm font-semibold">Bet Amount:</label>
-                        <input type="number" min="10" step="10" @bind="currentBet" class="bg-slate-950 border border-emerald-700 rounded px-3 py-1.5 w-28 text-white" />
-                        <button @onclick="StartGame" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-2 rounded-lg shadow">
+                        <label class="text-sm font-semibold text-white">Bet Amount:</label>
+                        <input type="number" min="10" step="10" @bind="currentBet" class="bg-[#000000] border border-[#A46928] rounded-lg px-3 py-1.5 w-28 text-[#E4A700] font-bold focus:outline-none focus:border-[#E4A700]" />
+                        <button @onclick="StartGame" class="bg-[#E4A700] hover:bg-[#A46928] text-[#000000] font-black px-6 py-2 rounded-lg shadow-lg transition">
                             Deal Hand
                         </button>
                     </div>
@@ -92,10 +93,16 @@
                 else
                 {
                     <div class="flex space-x-3">
-                        <button @onclick="Hit" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2 rounded-lg shadow">Hit</button>
-                        <button @onclick="Stand" class="bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-2 rounded-lg shadow">Stand</button>
+                        <!-- Hit: Royal Blue (#072475) -->
+                        <button @onclick="Hit" class="bg-[#072475] hover:bg-[#072475]/80 text-white font-bold border border-[#E4A700] px-6 py-2 rounded-lg shadow-lg transition">
+                            Hit
+                        </button>
+                        <!-- Stand: Crimson Red (#C70000) -->
+                        <button @onclick="Stand" class="bg-[#C70000] hover:bg-[#C70000]/80 text-white font-bold border border-[#7B1414] px-6 py-2 rounded-lg shadow-lg transition">
+                            Stand
+                        </button>
                     </div>
-                    <div class="text-sm text-emerald-200">Current Bet: <span class="font-bold text-white">🪙 @currentBet</span></div>
+                    <div class="text-sm text-slate-200">Current Bet: <span class="font-bold text-[#E4A700]">🪙 @currentBet</span></div>
                 }
             </div>
         </div>
@@ -153,7 +160,6 @@
         isRoundOver = true;
         int playerScore = GetHandScore(playerHand);
 
-        // Dealer draws until 17 or higher
         while (GetHandScore(dealerHand) < 17 && playerScore <= 21)
         {
             dealerHand.Add(deck.Draw());
