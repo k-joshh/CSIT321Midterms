@@ -1,4 +1,7 @@
 using Midterms.Components;
+using Microsoft.EntityFrameworkCore;
+using Midterms.Data;
+using Midterms.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +9,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// SQLite Database Factory
+builder.Services.AddDbContextFactory<CasinoDbContext>(options =>
+    options.UseSqlite("Data Source=casino.db"));
+
+builder.Services.AddScoped<UserStateService>();
+
 var app = builder.Build();
+
+// Auto-create database file on launch
+using (var scope = app.Services.CreateScope())
+{
+    var factory = scope.ServiceProvider.GetRequiredService<IDbContextFactory<CasinoDbContext>>();
+    using var db = factory.CreateDbContext();
+    db.Database.EnsureCreated();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
